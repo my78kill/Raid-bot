@@ -16,7 +16,9 @@ app = Flask(__name__)
 
 # ===================== CONFIGURATION =====================
 BOT_TOKEN = '8790246644:AAHtCdoSN5iYz7qEtqiFVq9h7ahwD44FyuE'
+
 application = Application.builder().token(BOT_TOKEN).build()
+
 OWNER_ID = (2145828547,
             7512786892)  # You can add multiple owner IDs as a tuple
 ACCESS_CODE = 'adam412tttyu'
@@ -1316,4 +1318,5 @@ if __name__ == "__main__":
 
     # Run web server (Render / hosting ke liye)
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
+
 
