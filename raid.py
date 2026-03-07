@@ -1301,22 +1301,10 @@ def run_bot():
     except Exception as e:
         print(f"❌ Error: {e}")
 
-# -----------------------------
-# FLASK ROUTE
-# -----------------------------
-@app.route('/')
-def home():
-    return "🤖 Bot is running!"
+# -------------------------------
+# ✅ NO run_polling here
+# main.py will handle running the bot
+# -------------------------------
 
-# -----------------------------
-# MAIN
-# -----------------------------
-if __name__ == "__main__":
-
-    # Run bot in separate thread
-    threading.Thread(target=run_bot).start()
-
-    # Run web server (Render / hosting ke liye)
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
 
 
