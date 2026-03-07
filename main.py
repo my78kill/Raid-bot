@@ -1,14 +1,14 @@
 # main.py
+import asyncio
 from raid import application
-from flask import Flask
-import os
 
-app = Flask(__name__)
+async def main():
+    # Initialize + start bot
+    await application.initialize()
+    await application.start()
+    # Polling + idle
+    await application.updater.start_polling()
+    await application.updater.idle()
 
-@app.route("/")
-def home():
-    return "🤖 Bot is running!"
-
-if __name__ == "__main__":
-    # Run the bot in main thread
-    application.run_polling(drop_pending_updates=True)
+# Run the async main loop
+asyncio.run(main())
