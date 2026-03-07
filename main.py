@@ -1,22 +1,30 @@
-from aiohttp import web
+from flask import Flask
 import asyncio
 from raid import application
 import os
+import threading
 
-async def handle(request):
-    return web.Response(text="🤖 Bot is running!")
+app = Flask(__name__)
 
+# Simple health endpoint
+@app.route("/")
+def home():
+    return "🤖 Bot is running!"
+
+# Async bot runner
 async def start_bot():
     await application.initialize()
     await application.start()
     await application.updater.start_polling()
     await application.updater.idle()
 
-app = web.Application()
-app.add_routes([web.get('/', handle)])
+def run_bot():
+    asyncio.run(start_bot())
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.create_task(start_bot())
+    # Run bot in a separate thread
+    threading.Thread(target=run_bot).start()
+
+    # Run Flask server on Render port
     port = int(os.environ.get("PORT", 10000))
-    web.run_app(app, host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)
