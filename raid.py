@@ -1292,10 +1292,11 @@ def main():
     print("✅ .removeuser (owner only)")
     print("="*60)
     
-
 def run_bot():
     try:
-        application.run_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
+        loop = asyncio.new_event_loop()   # create a new event loop
+        asyncio.set_event_loop(loop)      # set it for current thread
+        application.run_polling(drop_pending_updates=True)
     except KeyboardInterrupt:
         print("\n👋 Bot stopped!")
     except Exception as e:
@@ -1305,6 +1306,7 @@ def run_bot():
 # ✅ NO run_polling here
 # main.py will handle running the bot
 # -------------------------------
+
 
 
 
