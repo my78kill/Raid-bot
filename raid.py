@@ -15,11 +15,11 @@ from flask import Flask
 app = Flask(__name__)
 
 # ===================== CONFIGURATION =====================
-BOT_TOKEN = '8790246644:AAHtCdoSN5iYz7qEtqiFVq9h7ahwD44FyuE'
+BOT_TOKEN = '8785963267:AAGVuuqKNPb90TnRABoi6kLCVCnjqXQq2hM'
 
 application = Application.builder().token(BOT_TOKEN).build()
 
-OWNER_ID = (2145828547,
+OWNER_ID = (8539769704,
             7512786892)  # You can add multiple owner IDs as a tuple
 ACCESS_CODE = 'adam412tttyu'
 
